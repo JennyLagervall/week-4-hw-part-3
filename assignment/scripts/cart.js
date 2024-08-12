@@ -28,17 +28,31 @@ function empty(array){
 empty(basket);
 console.log('Basket array should be empty', basket);
 // end part 1
+const maxItems = 5
 
-Add a global const named maxItems and set it to 5.
+function isFull(numItems){
+if(numItems < maxItems){
+    return false;
+} else if(numItems >= maxItems){
+    return true;
+}
+}
+console.log('should be true', isFull(5))
+console.log('should be false', isFull(2))
+console.log('should be true', isFull(10))
 
-Create a function called isFull(). It should:
+// part 2 of this Q
 
-return false if the basket contains less than max number of items
-return true otherwise (equal or more than maxItems)
-Update the required addItem function to:
-Use the isFull function to prevent more than maxItems from being added to the basket.
-If an item was added to the array, return true
-If there was no room and the item could not be added return false
+function addItem(item){
+    basket.push(item);
+    return true;
+    }
+    addItem('pretzels')
+
+//Update the required addItem function to:
+//Use the isFull function to prevent more than maxItems from being added to the basket.
+//If an item was added to the array, return true
+//If there was no room and the item could not be added return false
 
 
 
