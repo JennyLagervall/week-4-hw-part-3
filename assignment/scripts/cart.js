@@ -1,53 +1,60 @@
 console.log('***** Cart Functions *****');
 // Make sure to test all functions here in the JS file!
 // We want to see how you are testing your code!!!
-
+const maxItems = 5
 let basket = [];
 
-function addItem(item){
-basket.push(item);
-return true;
+function addItem(item) {
+    if (isFull()) {
+        return false;
+    } else {
+        basket.push(item);
+        return true;
+
+    }
 }
-addItem('pretzels')
+addItem('pretzels');
+addItem('Apples');
+addItem('berries');
+addItem('fruit');
+addItem('cheese');
+console.log('trying to add coffee', addItem('coffee'));
+// addItem('tea');
 
 console.log('should show items in basket array', basket)
 console.log(`Basket is ${basket}`);
+
 // end addItem
 
-function listItems(array){
-    for (let i = 0; i < array.length; i++)
-        console.log(array[i]) 
-}
-// end listItems
-
-function empty(array){
-    while(array.length > 0){
-        array.pop();
+function listItems(array) {
+    for (let i = 0; i < array.length; i++) {
+        console.log(array[i]);
     }
 }
-empty(basket);
-console.log('Basket array should be empty', basket);
-// end part 1
-const maxItems = 5
+listItems(basket)
+// end listItems //
 
-function isFull(numItems){
-if(numItems < maxItems){
-    return false;
-} else if(numItems >= maxItems){
-    return true;
+function empty(array) {
+    array.length = 0;
+    return;
 }
+
+// empty(basket);
+// console.log('Basket array should be empty', basket.length);
+// end part 1
+
+
+function isFull() {
+    if (basket.length < maxItems) {
+        return false;
+    } else return true;
 }
-console.log('should be true', isFull(5))
-console.log('should be false', isFull(2))
-console.log('should be true', isFull(10))
+
+console.log('should be Full/true:', isFull());
 
 // part 2 of this Q
 
-function addItem(item){
-    basket.push(item);
-    return true;
-    }
-    addItem('pretzels')
+
 
 //Update the required addItem function to:
 //Use the isFull function to prevent more than maxItems from being added to the basket.
@@ -71,6 +78,6 @@ try {
         isFull: typeof isFull !== 'undefined' ? isFull : undefined,
         removeItem: typeof removeItem !== 'undefined' ? removeItem : undefined,
     };
-} catch(e) {
+} catch (e) {
     // Do nothing
 }
